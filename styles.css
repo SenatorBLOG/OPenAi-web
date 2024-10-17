@@ -1,0 +1,305 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap");
+@import url('css/base.css');
+@import url('css/header.css');
+@import url('css/navigation.css');
+@import url('css/main.css');
+@import url('css/slider.css');
+@import url('css/footer.css');
+@import url('css/extras.css');
+
+/* Reset and global styles */
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: 0;
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: 0;
+}
+
+body {
+    font-family: var(--font-01), Arial, sans-serif; /* Primary font */
+    background-color: #f4f4f9; /* Background color */
+    color: #333333; /* Text color */
+    line-height: 1.6;
+}
+
+
+/* Call to Action Button */
+.cta {
+    padding: 16px 32px;
+    color: var(--m-02);
+    background-color: transparent;
+    border: 1px solid rgba(99, 116, 152, 0.4); /* rgba($m-02, 0.4) */
+    font-family: var(--font-01), Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-top: 32px;
+    cursor: pointer;
+    box-shadow: inset 0px 0px 0px rgba(99, 116, 152, 0.2); /* rgba($m-02, 0.2) */
+    transition: all 0.4s ease;
+}
+
+.cta:hover {
+    border: 1px solid rgba(99, 116, 152, 0.1);
+    box-shadow: inset 0px -80px 0px rgba(99, 116, 152, 0.1);
+    transform: translateY(-5px);
+}
+
+@media screen and (max-width: 799px) {
+    .cta {
+        margin-top: 16px;
+    }
+}
+
+
+/* Search bar styling */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 20px 0;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #7c3ffff1;
+    outline: none;
+}
+
+/* Search results styling */
+#results {
+    list-style-type: none;
+    padding: 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#results li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+#results li:hover {
+    background-color: #f0f0f0;
+}
+
+/* Job listings styling */
+.job-listing {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.job-listing h3 {
+    color: #2c3e50;
+}
+
+.job-listing p {
+    color: #34495e;
+}
+
+/* University list styling */
+.university-list {
+    margin: 20px 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.university-list li {
+    margin-bottom: 10px;
+    color: #34495e;
+    font-size: 1.1em;
+}
+
+
+
+/* About Section (Floating Social Icons) */
+.about {
+    position: fixed;
+    z-index: 10;
+    bottom: 10px;
+    right: 10px;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    transition: all 0.2s ease;
+}
+
+.about .bg_links {
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    position: absolute;
+}
+
+.about .logo {
+    width: var(--size);
+    height: var(--size);
+    z-index: 9;
+    background-image: url(https://rafaelavlucas.github.io/assets/codepen/logo_white.svg);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: 10px 7px;
+    opacity: 0.9;
+    transition: all 1s 0.2s ease;
+    bottom: 0;
+    right: 0;
+}
+
+.about .social {
+    opacity: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.about .social .icon {
+    width: 100%;
+    height: 100%;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.2s ease, background-color 0.4s ease;
+    opacity: 0;
+    border-radius: 50%;
+}
+
+.about .social.portfolio .icon {
+    background-image: url(https://rafaelavlucas.github.io/assets/codepen/link.svg);
+    transition: all 0.8s ease;
+}
+
+.about .social.dribbble .icon {
+    background-image: url(https://rafaelavlucas.github.io/assets/codepen/dribbble.svg);
+    transition: all 0.3s ease;
+}
+
+.about .social.linkedin .icon {
+    background-image: url(https://rafaelavlucas.github.io/assets/codepen/linkedin.svg);
+    transition: all 0.8s ease;
+}
+
+.about:hover {
+    width: 105px;
+    height: 105px;
+    transition: all var(--transition);
+}
+
+.about:hover .logo {
+    opacity: 1;
+    transition: all 0.6s ease;
+}
+
+.about:hover .social {
+    opacity: 1;
+}
+
+.about:hover .social .icon {
+    opacity: 0.9;
+}
+
+.about:hover .social .icon:hover {
+    background-size: 28px;
+}
+
+.about:hover .social.portfolio {
+    bottom: calc(100% - 40px);
+    transition: all 0.3s var(--cubic);
+}
+
+.about:hover .social.portfolio .icon:hover {
+    background-color: #698fb7;
+}
+
+.about:hover .social.dribbble {
+    bottom: 45%;
+    right: 45%;
+    transition: all 0.3s 0.15s var(--cubic);
+}
+
+.about:hover .social.dribbble .icon:hover {
+    background-color: #ea4c89;
+}
+
+.about:hover .social.linkedin {
+    bottom: 0;
+    right: calc(100% - 40px);
+    transition: all 0.3s 0.25s var(--cubic);
+}
+
+.about:hover .social.linkedin .icon:hover {
+    background-color: #0077b5;
+}
+
+
+.image-slider {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow */
+}
+
+.image-slider img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1.5s ease, transform 1.5s ease; /* Smooth transition effect */
+}
+
+.image-slider img.active {
+    opacity: 1;
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.image-slider button.prev,
+.image-slider button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.image-slider button.prev {
+    left: 10px;
+}
+
+.image-slider button.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}

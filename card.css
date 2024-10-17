@@ -1,0 +1,107 @@
+/* Основные стили для всего документа */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Контейнер для карт */
+.container {
+    display: flex;
+    flex-wrap: wrap;  /* Теперь карты будут переноситься на новую строку при необходимости */
+    justify-content: center;
+    gap: 30px;  /* Увеличенный промежуток между картами для более современного вида */
+    max-width: 1200px;
+    margin: 40px ;
+    padding: 20px;
+}
+
+/* Карточка */
+.card {
+    position: relative;
+    width: 100%;
+    max-width: 300px; /* Уменьшил максимальную ширину для более изящного вида */
+    background-color: #ffffff;
+    border-radius: 20px;  /* Закругление для современного стиля */
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);  /* Мягкая тень */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;  /* Плавные анимации */
+}
+
+/* Эффект при наведении */
+.card:hover {
+    transform: translateY(-15px) scale(1.03);  /* Карта слегка увеличивается и поднимается */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);  /* Глубокая тень при наведении */
+}
+
+/* Изображение внутри карточки */
+.card__thumb {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 5px solid #ccc; /* Добавил контрастный бордюр */
+    position: relative;
+}
+
+.card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Изображение будет обрезано с сохранением пропорций */
+    transition: transform 0.4s ease;  /* Плавное увеличение изображения */
+}
+
+.card:hover .card__thumb img {
+    transform: scale(1.1);  /* Увеличение изображения при наведении */
+}
+
+/* Контент внутри карточки */
+.card__content {
+    padding: 20px;
+    text-align: center; /* Центрирование текста */
+}
+
+.card__title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.card__description {
+    font-size: 1rem;
+    color: #777;
+    line-height: 1.5;
+}
+
+.card__button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #3498db;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card__button:hover {
+    background-color: #2980b9;  /* Изменение цвета кнопки при наведении */
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;  /* Карты располагаются вертикально на маленьких экранах */
+        align-items: center;
+    }
+
+    .card {
+        max-width: 90%;  /* Занимают почти всю ширину на мобильных */
+    }
+}

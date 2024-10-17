@@ -1,0 +1,31 @@
+.social-bar {
+    display: flex;
+    justify-content: center;
+    position: 10px 0;
+  }
+  
+  .social-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .social-links li {
+    margin: 0 10px;
+  }
+  
+  .social-links a {
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .social-links img {
+    width: 44px;
+    height: 44px;
+    transition: transform 0.3s ease;
+  }
+  
+  .social-links img:hover {
+    transform: scale(1.2);
+  }
+  

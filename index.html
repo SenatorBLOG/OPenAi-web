@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalJobHub - Jobs in Canada</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/navigation.css">
+
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/extras.css">
+    
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/card.css">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap">
+</head>
+
+<body>
+
+    <!-- Navigation-->
+    <nav class="mainNav">
+        <div class="mainNav__logo">Logo</div>
+        <div class="mainNav__links">
+           <a href="#" class="mainNav__link">About</a>
+           <a href="#" class="mainNav__link">Projects</a>
+           <a href="#" class="mainNav__link">Team</a>
+           <a href="#" class="mainNav__link">Contacts</a>
+        </div>
+        <div class="mainNav__icon" onclick="toggleMenu()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">              <g data-name="Layer 2" fill="#9197AE">
+                 <g data-name="menu-2">
+                    <rect
+                       width="24"
+                       height="24"
+                       transform="rotate(180 12 12)"
+                       opacity="0"
+                    />
+                    <circle cx="4" cy="12" r="1" />
+                    <rect x="7" y="11" width="14" height="2" rx=".94" ry=".94" />
+                    <rect x="3" y="16" width="18" height="2" rx=".94" ry=".94" />
+                    <rect x="3" y="6" width="18" height="2" rx=".94" ry=".94" />
+                 </g>
+              </g>
+           </svg>
+        </div>
+     </nav>
+    <!-- End Floating Social Icons -->
+    <header class="mainHeading">
+        <div class="mainHeading__content">
+           <article class="mainHeading__text">
+              <p class="mainHeading__preTitle">your time</p>
+              <h2 class="mainHeading__title">to become professional</h2>
+              <p class="mainHeading__description">
+                 Far far away, behind the word mountains, far from the countries
+                 Vokalia and Consonantia, there live the blind texts.
+              </p>
+              <button class="cta">know more</button>
+           </article>
+     
+           <figure class="mainHeading__image">
+              <!-- Integrated Image Slider -->
+              <div class="image-slider">
+                 <button class="prev" onclick="prevImage()">&#10094;</button>
+                 <img src="images/1.stroitel.jpeg" alt="ConstructionWorker1" class="active">
+                 <img src="images/2.doctor.jpeg" alt="MedicalWorker">
+                 <img src="images/3.engineer.jpeg" alt="Engineer">
+                 <img src="images/4.webdesigner.jpeg" alt="Web Designer">
+                 <img src="images/5.cook.webp" alt="Cook">
+                 <button class="next" onclick="nextImage()">&#10095;</button>
+              </div>
+           </figure>
+        </div>
+     </header>
+    
+    <!-- End Header and Navigation -->
+
+    <!-- Social Media Links-->
+    <div id="scene" class="about">
+        <div class="bg_links">
+            <div class="social telegram" data-depth="0.2">
+                <a href="https://t.me/SenatorBLOG" target="_blank">
+                    <div class="icon"></div>
+                </a>
+            </div>
+            <div class="social youtube" data-depth="0.3">
+                <a href="https://www.youtube.com/channel/UCsCKNnXetGRKyet5-4Uxnuw" target="_blank">
+                    <div class="icon"></div>
+                </a>
+            </div>
+            <div class="social instagram" data-depth="0.4">
+                <a href="http://instagram.com/senatorovm" target="_blank">
+                    <div class="icon"></div>
+                </a>
+            </div>
+            <div class="social pinterest" data-depth="0.5">
+                <a href="https://www.pinterest.ru/sustav0712/" target="_blank">
+                    <div class="icon"></div>
+                </a>
+            </div>
+        </div>
+        <div class="logo"></div>
+    </div>
+
+    <!-- OpenAI -->
+    <h1>Recipe Generator</h1>
+    <input type="text" id="ingredients" placeholder="Enter ingredients (comma-separated)">
+    <input type="text" id="description" placeholder="Enter description">
+    <button id="generateBtn">Generate Recipe</button>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('generateBtn').onclick = function() {
+            const ingredients = document.getElementById('ingredients').value.split(',').map(item => item.trim());
+            const description = document.getElementById('description').value;
+
+            fetch('http://127.0.0.1:5000/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ ingredients, description }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = data.recipe || data.error;
+            })
+            .catch(error => console.error('Error:', error));
+        };
+    </script>
+    <div class="chatbot-container">
+        <div class="chatbox">
+            <div class="chat-output">
+                <div class="messages">
+                    <h2>ChefAI:</h2>
+                    <p id="response">Hello! How can I assist you today?</p>
+                </div>
+            </div>
+            <div class="input">
+                <input id="prompt" placeholder="Введите ваш запрос..." rows="4" cols="50"></input>
+                <button class="sendPrompt" onclick="sendPrompt()">Send</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- GEMINI_AI-->
+
+  <div class="chatbot-container">
+    <h1>AI Chat Assistant</h1>
+    <div class="chatbox">
+        <div class="chat-output">
+            <div class="messages">
+                <h2>ChefAI:</h2>
+                <p id="response">Hello! How can I assist you today?</p>
+            </div>
+        </div>
+        <div class="input">
+            <input id="prompt" placeholder="Введите ваш запрос..." rows="4" cols="50"></input>
+            <button class="sendPrompt" onclick="sendPrompt()"></button>
+        </div>
+    </div>
+  </div>
+  </div>
+    <script>
+        async function sendPrompt() {
+            const prompt = document.getElementById('prompt').value;
+            const responseElement = document.getElementById('response');
+
+            try {
+                // Отправляем запрос на сервер Flask
+                const response = await fetch('http://127.0.0.1:5000/generate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ prompt: prompt })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    responseElement.textContent = data.response;
+                } else {
+                    responseElement.textContent = 'Ошибка: ' + data.error;
+                }
+            } catch (error) {
+                responseElement.textContent = 'Ошибка подключения к серверу: ' + error.message;
+            }
+        }
+    </script>
+
+    <!-- Main Content Container -->
+    <div> 
+         
+        <!-- Search Bar 
+        <div class="search-container">
+             Иконка поиска (может быть использована FontAwesome)
+            <i class="fa fa-search search-icon"></i>
+            
+            
+            <input type="text" id="search" class="search-input" placeholder="Search jobs..." onkeyup="searchJobs()">
+            
+            
+            <button class="search-button" onclick="searchJobs()">&#x1F50D;</button>
+            
+             Результаты поиска 
+            <ul id="results"></ul>-->
+        </div> 
+        
+        <main class="container">
+            <!--Container Card-->
+            <div class="container">
+                <!-- Card 1 -->
+                <div class="card">
+                  <div class="card__thumb">
+                    <img class="card__image" src="image1.jpg" alt="Image 1">
+                    <div class="card__caption">
+                      <h3 class="card__title">Card Title 1</h3>
+                      <p class="card__snippet">This is a brief description of the card. It will appear in this section and fade out when the card is hovered over.</p>
+                      <a href="#" class="card__button">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+            
+                <!-- Card 2 -->
+                <div class="card">
+                  <div class="card__thumb">
+                    <img class="card__image" src="image2.jpg" alt="Image 2">
+                    <div class="card__caption">
+                      <h3 class="card__title">Card Title 2</h3>
+                      <p class="card__snippet">This is another description that appears on the second card.</p>
+                      <a href="#" class="card__button">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+            
+                <!-- Card 3 -->
+                <div class="card">
+                  <div class="card__thumb">
+                    <img class="card__image" src="image3.jpg" alt="Image 3">
+                    <div class="card__caption">
+                      <h3 class="card__title">Card Title 3</h3>
+                      <p class="card__snippet">And here is a third card with its description.</p>
+                      <a href="#" class="card__button">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="card">
+                  <div class="card__thumb">
+                    <img class="card__image" src="image3.jpg" alt="Image 3">
+                    <div class="card__caption">
+                      <h3 class="card__title">Card Title 3</h3>
+                      <p class="card__snippet">And here is a third card with its description.</p>
+                      <a href="#" class="card__button">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="card">
+                    <div class="card__thumb">
+                      <img class="card__image" src="image3.jpg" alt="Image 3">
+                      <div class="card__caption">
+                        <h3 class="card__title">Card Title 3</h3>
+                        <p class="card__snippet">And here is a third card with its description.</p>
+                        <a href="#" class="card__button">Learn More</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Card 6 -->
+                <div class="card">
+                    <div class="card__thumb">
+                      <img class="card__image" src="image3.jpg" alt="Image 3">
+                      <div class="card__caption">
+                        <h3 class="card__title">Card Title 3</h3>
+                        <p class="card__snippet">And here is a third card with its description.</p>
+                        <a href="#" class="card__button">Learn More</a>
+                      </div>
+                    </div>
+                </div>
+                 
+            
+            </div>
+
+            
+            <!-- About Section -->
+            <section id="about">
+                <h2>About Us</h2>
+                <p>We help find jobs across various industries. Stay up-to-date with our current job listings.</p>
+            </section>
+          
+            
+            <!-- Blog Section -->
+            <section id="blog">
+                <h2>Blog</h2>
+                <article>
+                    <h1>Online Postgraduate Studies in Latin America</h1>
+                    <p>Latin America is known for its entrepreneurial spirit and hard-working people. With the rise of the internet, professionals can now perfect their skills further by attending top universities across the continent.</p>
+                    <p>Regardless of your country, online education allows you to enroll in prestigious universities that offer numerous specializations and international postgraduate degrees.</p>
+    
+                    <h2>Top Universities Offering Online Postgraduate Degrees</h2>
+                    <ul class="university-list">
+                        <li><strong>University of La Plata</strong> – Argentina offers more than 213 postgraduate programs online, providing optimal distance education in various fields.</li>
+                        <li><strong>Latin American University of the Caribbean (ULAC)</strong> – Located in Mexico, offers highly sought-after programs in areas such as public international law and educational sciences.</li>
+                        <li><strong>National University of Córdoba</strong> – Argentina's leading university, reaching over 80 countries with online postgraduate programs in fields like communication, education, and more.</li>
+                        <li><strong>Arturo Prat University (UNAP)</strong> – Chile, renowned for its international postgraduate programs in areas such as economics and finance, environmental management, and business administration.</li>
+                        <li><strong>University of the Andes (ULA)</strong> – Venezuela, offers a wide range of online postgraduate programs in areas like arts, economics, social sciences, and more.</li>
+                    </ul>
+                </article>
+            </section>
+        </main>
+    </div>
+
+<script src="scene.js"></script>
+
+<script src="server.js"></script>
+
+<script src="call.js"></script>
+<script src="footer.js"></script>
+<script src="parallax.js"></script>
+</body>
+</html>

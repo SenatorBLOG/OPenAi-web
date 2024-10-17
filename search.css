@@ -1,0 +1,89 @@
+/* Стиль для контейнера поиска */
+.search-container {
+    position: relative;
+    top: 10px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 12px 20px 12px 50px; /* Добавляем отступ для иконки */
+    border: 2px solid #ddd;
+    border-radius: 50px; /* Округленные края */
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    background: #f9f9f9;
+  }
+  
+  .search-input:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Более выраженная тень при фокусе */
+    background-color: #fff;
+  }
+  
+  /* Иконка поиска */
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #aaa;
+    pointer-events: none;
+  }
+  
+  /* Анимация при наведении на поле поиска */
+  .search-input:hover {
+    border-color: #4a90e2;
+    background-color: #fff;
+  }
+  
+  /* Кнопка поиска */
+  .search-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    background: linear-gradient(45deg, #4a90e2, #357abd); /* Градиентная кнопка */
+    border: none;
+    border-radius: 0 50px 50px 0;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-button:hover {
+    background: linear-gradient(45deg, #357abd, #4a90e2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Тень при наведении */
+  }
+  
+  /* Для маленьких экранов */
+  @media (max-width: 600px) {
+    .search-container {
+      max-width: 100%;
+      padding: 0 15px;
+    }
+    
+    .search-input {
+      font-size: 14px;
+      padding: 10px 15px 10px 40px;
+    }
+    
+    .search-icon {
+      left: 10px;
+      font-size: 16px;
+    }
+    
+    .search-button {
+      width: 40px;
+    }
+  }
+  

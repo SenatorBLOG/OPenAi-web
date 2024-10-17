@@ -1,0 +1,19 @@
+@import url('base.css');
+
+/* Main content styling */
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #e1f5fe;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: justify;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 799px) {
+    .container {
+        padding: 0 20px;
+    }
+}

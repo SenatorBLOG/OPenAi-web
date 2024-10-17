@@ -1,0 +1,67 @@
+/* Main navigation styling */
+.mainNav {
+    width: 100%;
+    height: 80px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #9197ae;
+    text-transform: uppercase;
+    padding: 0 40px;
+    background-color: #2c3e50;
+}
+
+.mainNav__logo {
+    font-weight: 800;
+    letter-spacing: 1px;
+    font-size: 18px;
+}
+
+.mainNav__links.active {
+    display: flex;
+    }
+
+
+.mainNav__link {
+    letter-spacing: 1px;
+    font-size: 14px;
+    margin-left: 20px;
+    font-weight: 600;
+    box-shadow: inset 0px -10px 0px rgba(white, 0.5);
+    transition: all 0.4s ease, transform 0.2s ease;
+    padding: 2px 4px;
+    transform: translateY(0px);
+   }  
+
+.mainNav__link:hover {
+    transform: translateY(-5px);
+    box-shadow: inset 0px -20px 0px white;
+}
+
+
+/* Mobile navigation styles */
+@media (max-width: 768px) {
+    .mainNav__links {
+        display: none;  /* Hidden by default */
+        flex-direction: column;
+        position: absolute; /* Position it correctly for mobile */
+        top: 80px;          /* Below the header */
+        right: 0;
+        background-color: #fff; /* Ensure it's visible on mobile */
+        width: 100%;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add a shadow for separation */
+        z-index: 99;
+    }
+    
+    .mainNav__links.active {
+        display: flex;  /* Show when active */
+    }
+
+    .mainNav__icon {
+        display: block;  /* Ensure hamburger is visible */
+        cursor: pointer;
+    }
+}

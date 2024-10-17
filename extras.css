@@ -1,0 +1,134 @@
+:root {
+    --size: 40px;
+    --distance: 80px;
+}
+
+/* Social Icons */
+.about {
+    position: fixed;
+    z-index: 10;
+    bottom: 10px;
+    right: 10px;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    transition: all 0.2s ease;
+}
+
+.about .bg_links {
+    width: var(--size);
+    height: var(--size);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    position: absolute;
+}
+
+.about .social {
+    position: absolute;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    transition: transform 0.6s ease;
+}
+/* Define the angles for each icon (from 270° to 360°) */
+.about .social.telegram {
+    transform: translate(0, 0);  /* 270° */
+}
+
+.about .social.youtube {
+    transform: translate(0, 0);  /* 300° */
+}
+
+.about .social.instagram {
+    transform: translate(0, 0);  /* 330° */
+}
+
+.about .social.pinterest {
+    transform: translate(0, 0);  /* 360° */
+}
+
+.about .social .icon {
+    width: var(--size);
+    height: var(--size);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.9;
+    transform: rotate(0deg);
+    transition: transform 0.6s ease;
+}
+
+/* Hover Effect */
+.about:hover {
+    width: 105px;
+    height: 105px;
+    transition: all 0.6s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+}
+
+.about:hover .social {
+    opacity: 1;
+    transform: rotate(360deg);  /* Rotate the whole social link */
+}
+
+.about:hover .social .icon {
+    transform: rotate(-360deg); /* Counter-rotate the icon */
+}
+
+/* Hover Effect to expand icons in different directions */
+.about:hover .social.telegram {
+    transform: translateX(-var(--distance));  /* 270° (left) */
+}
+
+.about:hover .social.youtube {
+    transform: translate(-60px, -35px);  /* 300° (top-left) */
+}
+
+.about:hover .social.instagram {
+    transform: translate(-35px, -60px);  /* 330° (top-left) */
+}
+
+.about:hover .social.pinterest {
+    transform: translateY(-var(--distance));  /* 360° (top) */
+}
+
+/* Social Links */
+.about .social.telegram .icon {
+    background-image: url(https://static.wixstatic.com/media/e058b7_a4c4f705889a4eb49345cd83380e5a3d~mv2.png);
+}
+
+.about .social.youtube .icon {
+    background-image: url(https://static.wixstatic.com/media/45bce1d726f64f1999c49feae57f6298.png);
+}
+
+.about .social.instagram .icon {
+    background-image: url(https://static.wixstatic.com/media/7e74014500cdda8b7c70fef353c319d2.png);
+}
+
+.about .social.pinterest .icon {
+    background-image: url(https://static.wixstatic.com/media/9e47c827082f40bdb54d0cd16c3b28f6.png);
+}
+
+/* Logo */
+.about .logo {
+    width: var(--size);
+    height: var(--size);
+    z-index: 9;
+    background-image: url(https://rafaelavlucas.github.io/assets/codepen/logo_white.svg);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: 10px 7px;
+    opacity: 0.9;
+    transition: all 1s 0.2s ease;
+    bottom: 0;
+    right: 0;
+}

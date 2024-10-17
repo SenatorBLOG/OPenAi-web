@@ -1,0 +1,115 @@
+@import url('base.css');
+
+/* Image Slider */
+.image-slider {
+    position: static;
+    margin: 50px;
+    top: 100px;
+    right: 100px;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.image-slider img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+.image-slider img.active {
+    opacity: 1;
+    transform: scale(1.05);
+}
+/* Navigation Arrows for Slider */
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 15;
+}
+
+
+
+.next {
+    right: 10px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Main Heading Image */
+.mainHeading__image {
+    right: 0;
+    max-width: 100%;  /* Полная ширина для отзывчивости */
+    width: 60%;
+    height: auto;
+    position: absolute;
+    overflow: hidden;
+   
+    transform: translateY(0);  /* Отключение лишних переводов */
+    animation: image 0.6s 0.2s ease backwards;
+}
+
+@media screen and (max-width: 799px) {
+    .mainHeading__image {
+        width: 100%;  /* На мобильных устройствах */
+        height: auto;
+        right: 0;
+        transform: translateY(0);  /* Убедитесь, что изображение в области видимости */
+    }
+}
+
+/* Анимация изображения */
+@keyframes image {
+    0% {
+        opacity: 0;
+        transform: translateY(200px);
+    }
+}
+
+/* Слой эффекта для изображения */
+.mainHeading__image:before, 
+.mainHeading__image:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+    opacity: 0.3;
+    left: 10;
+}
+
+.mainHeading__image:before {
+    animation: imageBefore 1s 0.2s ease backwards;
+}
+
+@keyframes imageBefore {
+    0% {
+        height: 100%;
+        top: 0;
+    }
+}
+
+.mainHeading__image:after {
+    background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+    height: 100%;
+    top: 0;
+    opacity: 0.2;
+}
+
+.mainHeading__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /* Обеспечить корректное масштабирование изображения */
+}
